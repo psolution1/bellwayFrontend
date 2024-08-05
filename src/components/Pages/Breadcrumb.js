@@ -40,7 +40,7 @@ const Breadcrumb = () => {
 
   return (
     <div>
-      <Link to="/">Dashboard /</Link>
+      <Link to="/">Dashboard / </Link>
        {pathnames['0']=='call_log_details'?<> {pathnames.map((name, index) => {
         const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
         const isLast = index === pathnames.length - 1;
