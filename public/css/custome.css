@@ -1238,7 +1238,7 @@ h6 {
 }
 
 [class*="sidebar-dark-"] .nav-treeview>.nav-item>.nav-link {
-  color: #333 !important;
+  color: #fff !important;
 }
 
 [class*=sidebar-dark] .user-panel {
@@ -1290,7 +1290,7 @@ h4 {
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, .5);
+  color: rgba(0, 0, 0, 1);
 }
 
 .cardbox {

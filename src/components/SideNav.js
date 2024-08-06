@@ -248,7 +248,8 @@ function SideNav() {
                         </li>
                       </ul>
                     </li>
-                    <li className="nav-item">
+
+                    {/* <li className="nav-item">
                       <Link
                         to="#"
                         className="nav-link "
@@ -291,9 +292,11 @@ function SideNav() {
                           </Link>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
+
                     {/* manage sms start */}
-                    <li className="nav-item">
+
+                    {/* <li className="nav-item">
                       <Link
                         to="#"
                         className="nav-link"
@@ -349,10 +352,12 @@ function SideNav() {
                           </Link>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
+
                     {/* manage sms end */}
                     {/* manage Wtsp start */}
-                    <li className="nav-item">
+
+                    {/* <li className="nav-item">
                       <Link
                         to="#"
                         className="nav-link inactive"
@@ -420,17 +425,12 @@ function SideNav() {
                             <p>Business WA</p>
                           </Link>
                         </li>
-
-                        {/* <li className="nav-item">
-                  <a   href="" className={activeItem === 'buysms' ? 'nav-link active' : 'nav-link'}
-                  onClick={() => handleItemClick('buysms')}>
-                      <p> Setting</p>
-                    </a>
-                  </li> */}
                       </ul>
-                    </li>
+                    </li> */}
+
                     {/* manage Wtsp end */}
-                    <li className="nav-item">
+
+                    {/* <li className="nav-item">
                       <Link
                         to="/UploadContent"
                         className={
@@ -442,9 +442,11 @@ function SideNav() {
                         <i className="nav-icon far fa-credit-card" />
                         Contact's
                       </Link>
-                    </li>
+                    </li> */}
+
                     {/* Api  */}
-                    <li className="nav-item">
+
+                    {/* <li className="nav-item">
                       <Link
                         to="#"
                         className="nav-link"
@@ -473,8 +475,10 @@ function SideNav() {
                           </Link>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
+
                     {/* Api */}
+
                     <li className="nav-item">
                       <Link
                         to="/productservices"
@@ -498,7 +502,7 @@ function SideNav() {
                 </li> */}
 
                     {/* for report  */}
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <Link
                         to="#"
                         className="nav-link"
@@ -539,7 +543,7 @@ function SideNav() {
                           </Link>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
                     {/* for report */}
 
                     <li className="nav-item">
@@ -555,6 +559,7 @@ function SideNav() {
                         Setting
                       </Link>
                     </li>
+                    
                   </>
                 </ul>
               </nav>
