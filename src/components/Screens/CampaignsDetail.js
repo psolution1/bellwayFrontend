@@ -120,7 +120,7 @@ function CampaignsDetail() {
                             >
                               PROSPECTS
                             </button>
-                            <button
+                            {/* <button
                               className="nav-link"
                               id="nav-tab-2"
                               data-bs-toggle="tab"
@@ -131,7 +131,7 @@ function CampaignsDetail() {
                               aria-selected="false"
                             >
                               MEMBERS
-                            </button>
+                            </button> */}
                             <button
                               className="nav-link"
                               id="nav-tab-3"
@@ -385,18 +385,18 @@ function CampaignsDetail() {
                           </div>
                         </div>
                         <div
-                          className="tab-pane fade active show"
+                          className="tab-pane"
                           id="tab-1"
                           role="tabpanel"
-                          aria-labelledby="nav-tab-0"
+                          aria-labelledby="nav-tab-1"
                         >
                           <ProspectTable />
                         </div>
                         <div
-                          className="tab-pane fade active show"
+                          className="tab-pane"
                           id="tab-3"
                           role="tabpanel"
-                          aria-labelledby="nav-tab-0"
+                          aria-labelledby="nav-tab-3"
                         >
                           <FileTab />
                         </div>

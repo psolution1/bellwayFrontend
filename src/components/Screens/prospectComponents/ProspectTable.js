@@ -111,12 +111,12 @@ function ProspectTable() {
   return (
     <div>
       <div className="row">
-        <div className="col">
-          <h1>Prospect Table</h1>
+        <div className="col-12">
+          <div className="pros-head">
+              <h1>Prospects</h1>
+              <button onClick={fetchData}>Refresh</button>
+          </div>
         </div>
-      </div>
-      <div className="col" style={{ float: "right", marginBottom: "10px" }}>
-        <button onClick={fetchData}>Refresh Prospect</button>
       </div>
       <div>
         <DataTable

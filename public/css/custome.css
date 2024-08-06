@@ -4197,3 +4197,18 @@ button.button-57.bg_colores {
   padding-right: 15px;
   padding-left: 5px;
 }
+.pros-head{
+  padding: 0px 0px 0px 0px;
+  display: inline-block;
+}
+.pros-head h1{
+  padding: 0px 0px 0px 0px;
+  display: inline-block;
+}
+.pros-head button{
+  padding: 0px 0px 0px 0px;
+  display: inline-block;
+}
+.pros-file-cont{
+  padding: 0px 0px 0px 0px;
+}

@@ -43,13 +43,17 @@ function FileTab() {
   return (
     <div>
       <div className="row">
-        <div className="col">
-          <h1>Upload Prospects</h1>
+        <div className="col-12">
+          <div className="pros-head">
+              <h1>Upload Prospects</h1>
+          </div>
         </div>
       </div>
-      <div className="col">
-        <input type="file" name="prospects" onChange={handleChangeFile} />
-        <button onClick={handleUpload}>Upload Prospects</button>
+      <div className="col-12">
+        <div className="pros-file-cont">
+          <input type="file" name="prospects" onChange={handleChangeFile} />
+          <button onClick={handleUpload}>Upload</button>
+        </div>
       </div>
     </div>
   );

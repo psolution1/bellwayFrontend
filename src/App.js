@@ -93,7 +93,7 @@ function App() {
                 <Route path="/login" element={<Dashboard />}></Route>
 
                 <Route path="/Dashboard" element={<Dashboard />}></Route>
-                <Route path="/" element={<Home />}></Route>
+                <Route path="/" element={<Dashboard />}></Route>
                 <Route path="/campaigns" element={<Campaigns />}></Route>
                 <Route path="/CampaignsDetail" element={<CampaignsDetail />}></Route>
                 <Route path="/CreateCampaigns" element={<CreateCampaigns />}></Route>
