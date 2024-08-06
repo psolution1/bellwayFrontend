@@ -4226,7 +4226,7 @@ button.button-57.bg_colores {
     background-color: #e5e5e5;
     border-radius: 3px;
 }
-.pros-head button{
+.pros-file-cont button{
   padding: 3px 10px 3px 10px;
     display: inline-block;
     border: 2px solid #13b9cd;
@@ -4235,7 +4235,7 @@ button.button-57.bg_colores {
     font-size: 14px;
     border-radius: 3px;
 }
-.pros-head button:hover{
+.pros-file-cont button:hover{
   border: 2px solid #13b9cd;
   background-color: #fff;
   color: #13b9cd;
