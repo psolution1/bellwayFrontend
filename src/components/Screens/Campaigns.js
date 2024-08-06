@@ -366,7 +366,7 @@ function Campaigns() {
                                           bottom: 10,
                                         }}
                                       >
-                                        View More&nbsp;&nbsp;
+                                        View More &nbsp;&nbsp;
                                         <i
                                           className="fa fa-angle-right"
                                           aria-hidden="true"
