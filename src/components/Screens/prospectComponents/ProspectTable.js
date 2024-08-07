@@ -158,14 +158,14 @@ function ProspectTable() {
                   value="All"
                   onChange={(e) => setDisposition(e.target.value)}
                 />
-                <label>{"  "}All</label>
+                <label>{"  "}All</label>&nbsp;&nbsp;
                 <input
                   type="radio"
                   name="disposition"
                   value="Callback"
                   onChange={(e) => setDisposition(e.target.value)}
                 />
-                <label>{"  "}Callback</label>
+                <label>{"  "}Callback</label>&nbsp;&nbsp;
                 <input
                   type="radio"
                   name="disposition"
@@ -174,7 +174,7 @@ function ProspectTable() {
                 />
                 <label>
                   {"  "}Interested{"   "}
-                </label>
+                </label>&nbsp;&nbsp;
                 <input
                   type="radio"
                   name="disposition"
@@ -183,12 +183,12 @@ function ProspectTable() {
                 />
                 <label>
                   {"  "}Not Interested{"   "}
-                </label>
+                </label>&nbsp;&nbsp;&nbsp;&nbsp;
                 <button>
                   <a
                     href={`${apiUrl}/download_prospects?agentEmail=${agent}&campaignName=${campaign}&disposition=${disposition}`}
                   >
-                    Download CSV
+                    Download
                   </a>
                 </button>
                 </div>
