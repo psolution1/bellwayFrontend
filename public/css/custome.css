@@ -4240,3 +4240,30 @@ button.button-57.bg_colores {
   background-color: #fff;
   color: #13b9cd;
 }
+
+
+.pros-file-cont-filter{
+  padding: 10px 15px 10px 15px;
+    margin-top: 15px;
+    background-color: #e5e5e5;
+    border-radius: 3px;
+}
+.pros-file-cont-filter .filter-colmn button{
+    padding: 0px;
+    border: 0px solid #13b9cd;
+    background-color: transparent;
+}
+.pros-file-cont-filter .filter-colmn button a{
+  padding: 3px 10px 3px 10px;
+    display: inline-block;
+    border: 2px solid #13b9cd;
+    background-color: #13b9cd;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 3px;
+}
+.pros-file-cont-filter .filter-colmn button a:hover{
+  border: 2px solid #13b9cd;
+  background-color: #fff;
+  color: #13b9cd;
+}

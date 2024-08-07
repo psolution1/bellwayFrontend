@@ -78,7 +78,6 @@ const Breadcrumb = () => {
           </span>
         );
       })}</>}
-     
     </div>
   );
 };

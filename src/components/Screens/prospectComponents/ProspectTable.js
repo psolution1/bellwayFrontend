@@ -53,48 +53,16 @@ function ProspectTable() {
     setSelectedRows(selectedRows);
   };
 
-  // Toggle the state so React Data Table changes to clearSelectedRows are triggered
-  const handleClearRows = () => {
-    setToggleClearRows(!toggledClearRows);
-  };
-
-  const [file, setFile] = React.useState();
-
-  function handleChangeFile(event) {
-    setFile(event.target.files[0]);
-  }
-
-  const handleUpload = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("prospects", file);
-      formData.append("fileName", file.name);
-      const config = {
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      };
-      const res = await axios.post(
-        `${apiUrl}/add_bulk_prospect`,
-        formData,
-        config
-      );
-      console.log(res.status, res.data);
-      if (res.status === 201) {
-        toast.success("Prospect Added Successfully");
-      }
-    } catch (err) {
-      console.log(err);
-      toast.error("Something went wrong");
-    }
-  };
-
   const [data, setData] = React.useState([]);
+  const [disposition, setDisposition] = React.useState("All");
+  const [campaign, setCampaign] = React.useState("All");
+  const [agent, setAgent] = React.useState("All");
 
-  const fetchData = async () => {
+  const fetchData = async (fDisposition = null, agentEmail, campaignName) => {
     try {
-      const agent = localStorage.getItem("agent_email")
-      const res = await axios.get(`${apiUrl}/get_all_prospects?agent=${agent}`);
+      const res = await axios.get(
+        `${apiUrl}/get_all_prospects?disposition=${fDisposition}&agentEmail=${agentEmail}&campaignName=${campaignName}`
+      );
       if (res.status === 200) {
         setData(res.data.data);
       }
@@ -105,11 +73,40 @@ function ProspectTable() {
   };
 
   React.useEffect(() => {
-    fetchData();
+    fetchData(disposition, agent, campaign);
+  }, [disposition, agent, campaign]);
+
+  const [filters, setFilters] = React.useState({});
+  const fetchFilters = async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/get_all_prospects_filters`);
+      if (res.status === 200) {
+        setFilters(res.data.data);
+        console.log(res.data.data);
+      }
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  React.useEffect(() => {
+    fetchFilters();
   }, []);
+
+  const downloadCsv = async () => {
+    try {
+      await axios.get(
+        `${apiUrl}/download_prospects?agentEmail=${agent}&campaignName=${campaign}&disposition=${disposition}`
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div>
+
       <div className="row">
         <div className="col-12">
           <div className="pros-head">
@@ -118,6 +115,88 @@ function ProspectTable() {
           </div>
         </div>
       </div>
+
+      <div className="pros-file-cont-filter">
+          <div className="row">
+
+            <div className="col-12 col-lg-5">
+              <div className="row">
+                <div className="col">
+                  <div className="filter-colmn">
+                      <label>Select By Agent</label>
+                      <br />
+                      <select onChange={(e) => setAgent(e.target.value)}>
+                        <option value="All">All</option>
+                        {filters.agents?.map((agent) => (
+                          <option value={agent._id}>{agent._id}</option>
+                        ))}
+                      </select>
+                    </div>
+                </div>
+                <div className="col">
+                  <div className="filter-colmn">
+                      <label>Select By Campaign</label>
+                      <br />
+                      <select onChange={(e) => setCampaign(e.target.value)}>
+                        <option value="All">All</option>
+                        {filters.campaigns?.map((campaign) => (
+                          <option value={campaign._id}>{campaign._id}</option>
+                        ))}
+                      </select>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-12 col-lg-7">
+              <div className="filter-colmn">
+                <label>Select Disposition</label>
+                <br />
+                <input
+                  type="radio"
+                  name="disposition"
+                  value="All"
+                  onChange={(e) => setDisposition(e.target.value)}
+                />
+                <label>{"  "}All</label>
+                <input
+                  type="radio"
+                  name="disposition"
+                  value="Callback"
+                  onChange={(e) => setDisposition(e.target.value)}
+                />
+                <label>{"  "}Callback</label>
+                <input
+                  type="radio"
+                  name="disposition"
+                  value="Interested"
+                  onChange={(e) => setDisposition(e.target.value)}
+                />
+                <label>
+                  {"  "}Interested{"   "}
+                </label>
+                <input
+                  type="radio"
+                  name="disposition"
+                  value="Not Interested"
+                  onChange={(e) => setDisposition(e.target.value)}
+                />
+                <label>
+                  {"  "}Not Interested{"   "}
+                </label>
+                <button>
+                  <a
+                    href={`${apiUrl}/download_prospects?agentEmail=${agent}&campaignName=${campaign}&disposition=${disposition}`}
+                  >
+                    Download CSV
+                  </a>
+                </button>
+                </div>
+            </div>
+
+          </div>
+      </div>
+
       <div>
         <DataTable
           columns={columns}

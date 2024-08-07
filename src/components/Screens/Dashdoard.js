@@ -248,6 +248,20 @@ function Dashboard() {
     }
   };
 
+
+  const getStats = () => {
+    try {
+      axios.get(`${apiUrl}//get_dashboard_stats`).then((res) => {
+        console.log(res.data);
+        if (res.status === 200) {
+         
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   React.useEffect(() => {
     fetchData();
   }, []);
