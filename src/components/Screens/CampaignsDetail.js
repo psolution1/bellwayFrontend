@@ -385,7 +385,7 @@ function CampaignsDetail() {
                           </div>
                         </div>
                         <div
-                          className="tab-pane fade active show"
+                          className="tab-pane"
                           id="tab-1"
                           role="tabpanel"
                           aria-labelledby="nav-tab-1"
@@ -393,7 +393,7 @@ function CampaignsDetail() {
                           <ProspectTable />
                         </div>
                         <div
-                          className="tab-pane fade active show"
+                          className="tab-pane"
                           id="tab-3"
                           role="tabpanel"
                           aria-labelledby="nav-tab-3"
