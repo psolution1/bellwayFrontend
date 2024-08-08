@@ -45,11 +45,11 @@ function ProspectDetail() {
   const handleDisposition = (e, quit = false) => {
     e.preventDefault();
     console.log(selectDisposition, data);
-    if(selectDisposition==""){
+    if (selectDisposition == "") {
       toast.error("Please select disposition");
       return;
     }
-
+    setTimer(0);
     const payload = {
       remarks: data.remark,
       lastCaller: prospect?.assignPhone,
@@ -68,15 +68,27 @@ function ProspectDetail() {
       .then((res) => {
         console.log(res.data);
         toast.success("Remarks added successfully");
+        setData({
+          remark: "",
+          schedule: null,
+          callInitiatedTime: null,
+        })
+        setSelectDisposition("");
         if (!res.data.data) {
           toast.info("You don't have any pending lead");
-        } else setProspect(res.data.data);
+        } else {
+          setProspect(res.data.data);
+          autoCall(res.data.data?.phone);
+
+        }
       })
       .catch((err) => {
         console.log(err);
         toast.error("Something went wrong");
       });
   };
+
+
 
   React.useEffect(() => {
     setProspect(location.state);
