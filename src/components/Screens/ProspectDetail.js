@@ -16,7 +16,7 @@ const dispositions = [
 ];
 
 function ProspectDetail() {
-  const [selectDisposition, setSelectDisposition] = useState("Not Interested");
+  const [selectDisposition, setSelectDisposition] = useState("");
   const [prospect, setProspect] = useState(null);
   const location = useLocation();
   const [timer, setTimer] = useState(0);
@@ -45,6 +45,10 @@ function ProspectDetail() {
   const handleDisposition = (e, quit = false) => {
     e.preventDefault();
     console.log(selectDisposition, data);
+    if(selectDisposition==""){
+      toast.error("Please select disposition");
+      return;
+    }
 
     const payload = {
       remarks: data.remark,

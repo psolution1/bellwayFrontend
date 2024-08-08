@@ -40,8 +40,27 @@ function FileTab() {
     }
   };
 
+  const [files, setFiles] = React.useState([]);
+
+  const getFileList = async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/get_all_prospects_files`);
+      if (res.status === 200) {
+        console.log(res.data);
+        setFiles(res.data.data);
+      }
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  React.useEffect(() => {
+    getFileList();
+  }, []);
+
   return (
     <div>
+
       <div className="row">
         <div className="col-12">
           <div className="pros-head">
@@ -54,6 +73,26 @@ function FileTab() {
           <input type="file" name="prospects" onChange={handleChangeFile} />
           <button onClick={handleUpload}>Upload</button>
         </div>
+      </div>
+
+
+      <br />
+      <br />
+      
+      <div>
+        <ul>
+          {files.map((file) => {
+            if (file.includes("xlsx"))
+              return (
+                <li>
+                  {file + "   "}
+
+                  <a href={`${apiUrl}/download_prospect/${file}`}>Download</a>
+                </li>
+              );
+            else return null;
+          })}
+        </ul>
       </div>
     </div>
   );

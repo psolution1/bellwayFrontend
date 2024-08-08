@@ -279,8 +279,8 @@ function CampaignsDetail() {
 
                                       <h4 class="jss255">
                                         {stats
-                                          ? stats?.totalOverdue +
-                                            stats?.totalPendingCalls
+                                          ? stats?.totalProspects -
+                                            stats?.upcomingFollowups
                                           : 0}
                                       </h4>
                                     </div>
@@ -385,7 +385,7 @@ function CampaignsDetail() {
                           </div>
                         </div>
                         <div
-                          className="tab-pane"
+                          className="tab-pane fade active show"
                           id="tab-1"
                           role="tabpanel"
                           aria-labelledby="nav-tab-1"
@@ -393,7 +393,7 @@ function CampaignsDetail() {
                           <ProspectTable />
                         </div>
                         <div
-                          className="tab-pane"
+                          className="tab-pane fade active show"
                           id="tab-3"
                           role="tabpanel"
                           aria-labelledby="nav-tab-3"
