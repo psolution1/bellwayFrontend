@@ -227,8 +227,8 @@ function ProspectDetail() {
                                                                                         <i className="fa fa-whatsapp"></i>
                                                                                     </a> */}
                                           </em>
-                                          <Link
-                                            id="phonex"
+                                          {/* <Link
+                                            id="whatsapp"
                                             className="whatsapp"
                                             to={`whatsapp://send?abid=${prospect?.phone}&text=Hello%2C%20World!`}
                                             onClick={(e) =>
@@ -236,9 +236,7 @@ function ProspectDetail() {
                                             }
                                           >
                                             <i class="fab fa-whatsapp"></i>
-                                            {/* <i class="fa fas-whatsapp" aria-hidden="true"></i> */}
-                                            {/* <img src="./whatsapp-light.png" /> */}
-                                          </Link>
+                                          </Link> */}
                                         </div>
                                       </div>
                                       <div className="row">
