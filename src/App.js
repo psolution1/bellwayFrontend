@@ -91,7 +91,6 @@ function App() {
             {isLogined ? (
               <>
                 <Route path="/login" element={<Dashboard />}></Route>
-
                 <Route path="/Dashboard" element={<Dashboard />}></Route>
                 <Route path="/" element={<Dashboard />}></Route>
                 <Route path="/campaigns" element={<Campaigns />}></Route>

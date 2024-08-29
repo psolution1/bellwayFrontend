@@ -114,7 +114,7 @@ function ProspectTable() {
   return (
     <div>
 
-<div className="row">
+      <div className="row">
         <div className="col-12">
           <div className="pros-head">
               <h1>Prospects</h1>
@@ -124,81 +124,81 @@ function ProspectTable() {
       </div>
 
       <div className="pros-file-cont-filter">
-      <div className="row">
-        <div className="col-12 col-lg-5">
-          <div className="row">
-            <div className="col">
-              <div className="filter-colmn">
-                <label>Select By Agent</label>
-                <br />
-                <select onChange={(e) => setAgent(e.target.value)}>
-                  <option value="All">All</option>
-                  {filters.agents?.map((agent) => (
-                    <option value={agent._id}>{agent._id}</option>
-                  ))}
-                </select>
+        <div className="row">
+          <div className="col-12 col-lg-5">
+            <div className="row">
+              <div className="col">
+                <div className="filter-colmn">
+                  <label>Select By Agent</label>
+                  <br />
+                  <select onChange={(e) => setAgent(e.target.value)}>
+                    <option value="All">All</option>
+                    {filters.agents?.map((agent) => (
+                      <option value={agent._id}>{agent._id}</option>
+                    ))}
+                  </select>
                 </div>
-            </div>
-            <div className="col">
-            <div className="filter-colmn">
-              <label>Select By Campaign</label>
-              <br />
-              <select onChange={(e) => setCampaign(e.target.value)}>
-                <option value="All">All</option>
-                {filters.campaigns?.map((campaign) => (
-                  <option value={campaign._id}>{campaign._id}</option>
-                ))}
-              </select>
+              </div>
+              <div className="col">
+                <div className="filter-colmn">
+                  <label>Select By Campaign</label>
+                  <br />
+                  <select onChange={(e) => setCampaign(e.target.value)}>
+                    <option value="All">All</option>
+                    {filters.campaigns?.map((campaign) => (
+                      <option value={campaign._id}>{campaign._id}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
           </div>
+          <div className="col-12 col-lg-7">
+            <div className="filter-colmn">
+              <label>Select Disposition</label>
+              <br />
+              <input
+                type="radio"
+                name="disposition"
+                value="All"
+                onChange={(e) => setDisposition(e.target.value)}
+              />
+              <label>{"  "}All</label>&nbsp;&nbsp;
+              <input
+                type="radio"
+                name="disposition"
+                value="Callback"
+                onChange={(e) => setDisposition(e.target.value)}
+              />
+              <label>{"  "}Callback</label>&nbsp;&nbsp;
+              <input
+                type="radio"
+                name="disposition"
+                value="Interested"
+                onChange={(e) => setDisposition(e.target.value)}
+              />
+              <label>
+                {"  "}Interested{"   "}
+              </label>&nbsp;&nbsp;
+              <input
+                type="radio"
+                name="disposition"
+                value="Not Interested"
+                onChange={(e) => setDisposition(e.target.value)}
+              />
+              <label>
+                {"  "}Not Interested{"   "}
+              </label>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button>
+                <a
+                  href={`${apiUrl}/download_prospects?agentEmail=${agent}&campaignName=${campaign}&disposition=${disposition}`}
+                >
+                  Download CSV
+                </a>
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="col-12 col-lg-7">
-        <div className="filter-colmn">
-          <label>Select Disposition</label>
-          <br />
-          <input
-            type="radio"
-            name="disposition"
-            value="All"
-            onChange={(e) => setDisposition(e.target.value)}
-          />
-          <label>{"  "}All</label>&nbsp;&nbsp;
-          <input
-            type="radio"
-            name="disposition"
-            value="Callback"
-            onChange={(e) => setDisposition(e.target.value)}
-          />
-          <label>{"  "}Callback</label>&nbsp;&nbsp;
-          <input
-            type="radio"
-            name="disposition"
-            value="Interested"
-            onChange={(e) => setDisposition(e.target.value)}
-          />
-          <label>
-            {"  "}Interested{"   "}
-          </label>&nbsp;&nbsp;
-          <input
-            type="radio"
-            name="disposition"
-            value="Not Interested"
-            onChange={(e) => setDisposition(e.target.value)}
-          />
-          <label>
-            {"  "}Not Interested{"   "}
-          </label>&nbsp;&nbsp;&nbsp;&nbsp;
-          <button>
-            <a
-              href={`${apiUrl}/download_prospects?agentEmail=${agent}&campaignName=${campaign}&disposition=${disposition}`}
-            >
-              Download CSV
-            </a>
-          </button>
-        </div>
-        </div>
-      </div>
       </div>
       <div>
         <DataTable

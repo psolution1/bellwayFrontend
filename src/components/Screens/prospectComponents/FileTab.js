@@ -64,7 +64,7 @@ function FileTab() {
 
   return (
     <div>
-
+      
       <div className="row">
         <div className="col-12">
           <div className="pros-head">
@@ -72,12 +72,11 @@ function FileTab() {
           </div>
         </div>
       </div>
-
       <div className="row">
         <div className="col-12">
           <div className="pros-file-cont">
-            <input type="file" name="prospects" onChange={handleChangeFile} />
-            <button onClick={handleUpload}>Upload Prospects</button>
+          <input type="file" name="prospects" onChange={handleChangeFile} />
+          <button onClick={handleUpload}>Upload Prospects</button>
           </div>
         </div>
       </div>
@@ -85,20 +84,21 @@ function FileTab() {
       <div className="row">
         <div className="col-12">
             <div className="pros-file-down">
-            <div className="row">
-                  {files.map((file) => {
-                    if (file.includes("xlsx"))
-                      return (
-                        <div className="col-12">
+              <div className="row">
+                {files.map((file) => {
+                  if (file.includes("xlsx"))
+                    return (
+                      <div className="col-12">
                           <div className="file-down-row">
-                            {file + "   "}
-                            <a href={`${apiUrl}/download_prospect/${file}`}>Download</a>
-                          </div>
-                          </div>
-                      );
-                    else return null;
-                  })}
-                </div>
+                        {file + "   "}
+
+                        <a href={`${apiUrl}/download_prospect/${file}`}>Download</a>
+                        </div>
+                      </div>
+                    );
+                  else return null;
+                })}
+              </div>
             </div>
           </div>
       </div>

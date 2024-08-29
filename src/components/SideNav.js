@@ -170,7 +170,7 @@ function SideNav() {
                       </Link>
                     </li>
 
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <Link
                         to="#"
                         className="nav-link"
@@ -249,7 +249,7 @@ function SideNav() {
                           </Link>
                         </li>
                       </ul>
-                    </li>
+                    </li> */}
 
                     {/* <li className="nav-item">
                       <Link

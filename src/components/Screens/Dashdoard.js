@@ -283,6 +283,12 @@ function Dashboard() {
   };
 
   const [callLogs, setCallLogs] = useState([]);
+  const [callLogsOverview, setCallLogsOverview] = useState({
+    totalCalls: 0,
+    duration: 0,
+    notConnectedCount: 0,
+    callbackCount: 0,
+  });
 
   const getCallLogs = () => {
     try {
@@ -290,6 +296,25 @@ function Dashboard() {
         console.log(res.data);
         if (res.status === 200) {
           setCallLogs(res.data.data);
+
+          let overView = {
+            totalCalls: 0,
+            duration: 0,
+            notConnectedCount: 0,
+            callbackCount: 0,
+          };
+          // adding all the call logs
+          let callData = res.data.data;
+
+          for (let index = 0; index < callData.length; index++) {
+            const element = callData[index];
+            overView.totalCalls += element.totalCalls;
+            overView.duration += element.duration;
+            overView.notConnectedCount += element.notConnectedCount;
+            overView.callbackCount += element.callbackCount;
+          }
+          console.log(overView);
+          setCallLogsOverview(overView);
         }
       });
     } catch (err) {
@@ -362,7 +387,9 @@ function Dashboard() {
                                   <div class="jss257 jss259">
                                     <i class="fa fa-compress fa-4x"></i>
                                   </div>
-                                  <h4 class="jss255">220</h4>
+                                  <h4 class="jss255">
+                                    {callLogsOverview?.totalCalls}
+                                  </h4>
                                 </div>
                                 <div class="jss264 jss267">
                                   <div class="jss252">
@@ -378,7 +405,9 @@ function Dashboard() {
                                   <div class="jss257 jss262">
                                     <i class="fa fa-arrow-down fa-4x"></i>
                                   </div>
-                                  <h4 class="jss255">20</h4>
+                                  <h4 class="jss255">
+                                    {callLogsOverview?.callbackCount}
+                                  </h4>
                                 </div>
                                 <div class="jss264 jss267">
                                   <div class="jss252">
@@ -394,7 +423,10 @@ function Dashboard() {
                                   <div class="jss257 jss259">
                                     <i class="fa fa-arrow-up fa-4x"></i>
                                   </div>
-                                  <h4 class="jss255">250</h4>
+                                  <h4 class="jss255">
+                                    {callLogsOverview?.totalCalls -
+                                      callLogsOverview?.callbackCount}
+                                  </h4>
                                 </div>
                                 <div class="jss264 jss267">
                                   <div class="jss252">
@@ -410,7 +442,7 @@ function Dashboard() {
                                   <div class="jss257 jss260">
                                     <i class="fa fa-retweet fa-4x"></i>
                                   </div>
-                                  <h4 class="jss255">2</h4>
+                                  <h4 class="jss255">0</h4>
                                 </div>
                                 <div class="jss264 jss267">
                                   <div class="jss252">
@@ -426,7 +458,11 @@ function Dashboard() {
                                   <div class="jss257 jss259">
                                     <i class="fa fa-volume-control-phone fa-4x"></i>
                                   </div>
-                                  <h4 class="jss255">00:49:20</h4>
+                                  <h4 class="jss255">
+                                    {moment
+                                      .utc(callLogsOverview?.duration)
+                                      .format("HH:mm:ss")}
+                                  </h4>
                                 </div>
                                 <div class="jss264 jss267">
                                   <div class="jss252">

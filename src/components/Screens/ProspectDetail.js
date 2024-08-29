@@ -1,7 +1,12 @@
 import axios from "axios";
 import moment from "moment/moment";
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import { toast } from "react-toastify";
 export const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -13,6 +18,7 @@ const dispositions = [
   "Callback",
   "Not Reachable",
   "Call Disconnected",
+  "Busy",
 ];
 
 function ProspectDetail() {
@@ -20,6 +26,7 @@ function ProspectDetail() {
   const [prospect, setProspect] = useState(null);
   const location = useLocation();
   const [timer, setTimer] = useState(5);
+  const navigate = useNavigate();
 
   const [data, setData] = useState({
     remark: "",
@@ -71,6 +78,7 @@ function ProspectDetail() {
 
   const handleDisposition = (e, quit = false) => {
     e.preventDefault();
+    console.log(selectDisposition);
 
     if (selectDisposition == "") {
       toast.error("Please select disposition");
@@ -100,7 +108,7 @@ function ProspectDetail() {
           schedule: null,
           callInitiatedTime: null,
         });
-        setSelectDisposition("");
+        setSelectDisposition("Lead Generation");
         if (!res.data.data) {
           toast.info("You don't have any pending lead");
         } else {
@@ -132,7 +140,7 @@ function ProspectDetail() {
                         <div className="tab-panel">
                           <div className="row">
 
-                           <div className="col-12 col-lg-6 col-md-6 col-xl-6">
+                            <div className="col-12 col-lg-6 col-md-6 col-xl-6">
                               <div className="jss1455 jss148">
                                 <div className="jss1490 jss1579">
                                   <div className="prospect-wrap">
@@ -219,6 +227,18 @@ function ProspectDetail() {
                                                                                         <i className="fa fa-whatsapp"></i>
                                                                                     </a> */}
                                           </em>
+                                          <Link
+                                            id="phonex"
+                                            className="whatsapp"
+                                            to={`whatsapp://send?abid=${prospect?.phone}&text=Hello%2C%20World!`}
+                                            onClick={(e) =>
+                                              startCall(e, prospect?.phone)
+                                            }
+                                          >
+                                            <i class="fab fa-whatsapp"></i>
+                                            {/* <i class="fa fas-whatsapp" aria-hidden="true"></i> */}
+                                            {/* <img src="./whatsapp-light.png" /> */}
+                                          </Link>
                                         </div>
                                       </div>
                                       <div className="row">
@@ -447,6 +467,7 @@ function ProspectDetail() {
                                                     remark: e.target.value,
                                                   })
                                                 }
+                                                value={data.remark}
                                               >
                                                 {data.remark}
                                               </textarea>
@@ -480,6 +501,11 @@ function ProspectDetail() {
                                           marginRight: 10,
                                           border: 0,
                                           fontSize: 12,
+                                        }}
+                                        onClick={() => {
+                                          navigate("/CampaignsDetail", {
+                                            state: null,
+                                          });
                                         }}
                                       />
                                     </div>
@@ -705,6 +731,7 @@ function ProspectDetail() {
                                 <div className="jss187 jss191" />
                               </div>
                             </div>
+
                           </div>
                         </div>
                       </div>
