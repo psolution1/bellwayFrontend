@@ -64,7 +64,7 @@ function ProspectDetail() {
           setTimer(5);
           // Trigger the autoCall action
           document.getElementById("phone").click();
-
+          // document.querySelector("#phone").click();
           setData({
             ...data,
             callInitiatedTime: new Date(),
@@ -139,7 +139,6 @@ function ProspectDetail() {
                       <div className="tab-content">
                         <div className="tab-panel">
                           <div className="row">
-
                             <div className="col-12 col-lg-6 col-md-6 col-xl-6">
                               <div className="jss1455 jss148">
                                 <div className="jss1490 jss1579">
@@ -228,14 +227,14 @@ function ProspectDetail() {
                                                                                     </a> */}
                                           </em>
                                           {/* <Link
-                                            id="whatsapp"
-                                            className="whatsapp"
+                                            id="phonex"
+                                            // className="whatsapp"
                                             to={`whatsapp://send?abid=${prospect?.phone}&text=Hello%2C%20World!`}
                                             onClick={(e) =>
                                               startCall(e, prospect?.phone)
                                             }
                                           >
-                                            <i class="fab fa-whatsapp"></i>
+                                            <i className="fab fa-whatsapp"></i>
                                           </Link> */}
                                         </div>
                                       </div>
@@ -729,7 +728,6 @@ function ProspectDetail() {
                                 <div className="jss187 jss191" />
                               </div>
                             </div>
-
                           </div>
                         </div>
                       </div>
