@@ -139,7 +139,8 @@ function ProspectDetail() {
                       <div className="tab-content">
                         <div className="tab-panel">
                           <div className="row">
-                            <div className="col-12 col-lg-4 col-md-4 col-xl-4">
+
+                            <div className="col-12 col-lg-6 col-md-6 col-xl-6">
                               <div className="jss1455 jss148">
                                 <div className="jss1490 jss1579">
                                   <div className="prospect-wrap">
@@ -226,16 +227,16 @@ function ProspectDetail() {
                                                                                         <i className="fa fa-whatsapp"></i>
                                                                                     </a> */}
                                           </em>
-                                          {/* <Link
+                                          <Link
                                             id="phonex"
-                                            // className="whatsapp"
-                                            to={`whatsapp://send?abid=${prospect?.phone}&text=Hello%2C%20World!`}
-                                            onClick={(e) =>
-                                              startCall(e, prospect?.phone)
-                                            }
+                                            className="whatsapp"
+                                            to={`https://wa.me/${prospect?.phone}`}
+                                            // onClick={(e) =>
+                                            //   startCall(e, prospect?.phone)
+                                            // }
                                           >
-                                            <i className="fa fa-whatsapp"></i>
-                                          </Link> */}
+                                            <i className="fab fa-whatsapp"></i>
+                                          </Link>
                                         </div>
                                       </div>
                                       <div className="row">
@@ -274,7 +275,7 @@ function ProspectDetail() {
                                       </div>
                                     </div>
                                   </div>
-                                  <div className="row pt-2">
+                                  <div className="row pt-2 d-none">
                                     <div className="col-12 col-xl-12">
                                       <div
                                         className="accordion accordion-flush"
@@ -374,7 +375,7 @@ function ProspectDetail() {
                               <div className="jss187 jss191" />
                             </div>
 
-                            <div className="col-12 col-lg-4 col-md-4 col-xl-4">
+                            <div className="col-12 col-lg-6 col-md-6 col-xl-6">
                               <div className="jss1455 jss148">
                                 <div className="jss1490 jss1579">
                                   <div className="prospect-wrap">
@@ -512,7 +513,7 @@ function ProspectDetail() {
                               </div>
                             </div>
 
-                            <div className="col-12 col-lg-4 col-md-4 col-xl-4">
+                            <div className="col-12 col-lg-4 col-md-4 col-xl-4 d-none">
                               <div className="jss1455 jss148">
                                 <div className="jss1490 jss1579">
                                   <div className="prospect-wrap">

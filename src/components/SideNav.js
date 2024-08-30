@@ -160,13 +160,49 @@ function SideNav() {
 
                     <li className="nav-item">
                       <Link
+                        to="/ProspectWiseDetail"
+                        className={
+                          activeItem === "ProspectWiseDetail" ? "nav-link active" : "nav-link"
+                        }
+                      >
+                        <i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;
+                        Prospect Wise Detail
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link
                         to="/campaigns"
                         className={
                           activeItem === "campaigns" ? "nav-link active" : "nav-link"
                         }
                       >
-                        <i className="nav-icon fas fa fa-home" />
+                        <i class="fa fa-copyright" aria-hidden="true"></i>&nbsp;
                         Campaigns
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link
+                        to="/ActiveCampaign"
+                        className={
+                          activeItem === "ActiveCampaign" ? "nav-link active" : "nav-link"
+                        }
+                      >
+                        <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
+                        Active Campaign
+                      </Link>
+                    </li>
+
+                    <li className="nav-item">
+                      <Link
+                        to="/prospects"
+                        className={
+                          activeItem === "prospects" ? "nav-link active" : "nav-link"
+                        }
+                      >
+                        <i class="fa fa-users" aria-hidden="true"></i>&nbsp;
+                        Prospects
                       </Link>
                     </li>
 
@@ -475,7 +511,7 @@ function SideNav() {
                       </ul>
                     </li> */}
                     {/* Api */}
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                       <Link
                         to="/productservices"
                         className={
@@ -487,7 +523,7 @@ function SideNav() {
                         <i className="nav-icon far fa-credit-card" />
                         Product & Services
                       </Link>
-                    </li>
+                    </li> */}
 
                     {/* <li className="nav-item">
                   <a href="" className={activeItem === 'Report' ? 'nav-link active' : 'nav-link'}
@@ -552,7 +588,7 @@ function SideNav() {
                         }
                       >
                         <i className="nav-icon far fa fa-cog" />
-                        Setting
+                        Settings
                       </Link>
                     </li>
                   </>

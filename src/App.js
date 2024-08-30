@@ -59,6 +59,9 @@ import Campaigns from "./components/Screens/Campaigns";
 import CampaignsDetail from "./components/Screens/CampaignsDetail";
 import CreateCampaigns from "./components/Screens/CreateCampaigns";
 import ProspectDetail from "./components/Screens/ProspectDetail";
+import Prospects from "./components/Screens/Prospects";
+import ActiveCampaign from "./components/Screens/ActiveCampaign";
+import ProspectWiseDetail from "./components/Screens/ProspectWiseDetail";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -94,9 +97,12 @@ function App() {
                 <Route path="/Dashboard" element={<Dashboard />}></Route>
                 <Route path="/" element={<Dashboard />}></Route>
                 <Route path="/campaigns" element={<Campaigns />}></Route>
+                <Route path="/prospects" element={<Prospects />}></Route>
                 <Route path="/CampaignsDetail" element={<CampaignsDetail />}></Route>
                 <Route path="/CreateCampaigns" element={<CreateCampaigns />}></Route>
                 <Route path="/ProspectDetail" element={<ProspectDetail />}></Route>
+                <Route path="/ActiveCampaign" element={<ActiveCampaign />}></Route>
+                <Route path="/ProspectWiseDetail" element={<ProspectWiseDetail />}></Route>
                 <Route
                   path="/employeesreport"
                   element={<EmployeeReport />}

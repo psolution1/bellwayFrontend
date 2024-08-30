@@ -5,7 +5,7 @@ function Footer() {
     <div>
       <footer className="main-footer">
         <strong>  
-          Copyright © 2014-2021 <a href=" ">Crm Bizavtar </a>.
+          Copyright © 2024 <a href=" ">Bellway</a>&nbsp;
         </strong>
         All rights reserved.
         <div className="float-right d-none d-sm-inline-block">

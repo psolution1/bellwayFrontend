@@ -82,7 +82,7 @@ function Header() {
 
         <ul className="navbar-nav ml-auto">
           {/* Notifications Dropdown Menu */}
-          <li className="nav-item dropdown">
+          {/* <li className="nav-item dropdown">
             <Link className="nav-link" data-toggle="dropdown" to="#">
               <i className="far fa-bell pe-7s-bell" />
               {Array.isArray(leadcountdata) && (
@@ -112,7 +112,7 @@ function Header() {
                   ) : null
                 )}
             </div>
-          </li>
+          </li> */}
 
           <li className="nav-item dropdown">
             <Link className="nav-link" data-toggle="dropdown" href="#">
