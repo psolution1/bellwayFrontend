@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import companyLogo from "./avatar5.png";
 function SideNav() {
   const location = useLocation();
-
+  const userRole = localStorage.getItem("role");
   const [activeItem, setActiveItem] = useState("home");
   const [activeParent, setActiveParent] = useState("home");
 
@@ -194,6 +194,66 @@ function SideNav() {
                       </Link>
                     </li>
 
+                    {/* {(userRole === "admin" || userRole === "TeamLeader") && (
+                    <li className="nav-item">
+                      <Link
+                        to="#"
+                        className="nav-link"
+                        onClick={() => handleParentClick("smsManage")}
+                      >
+                        <i className="nav-icon fas fa fa fa-cog" />
+                        SMS Panel
+                        <i className="fas fa-angle-left right" />
+                      </Link>
+                      <ul
+                        className="nav nav-treeview"
+                        style={{
+                          display:
+                            activeParent === "smsManage" ? "block" : "none",
+                        }}
+                      >
+                        <li className="nav-item">
+                          <Link
+                            to="/GroupSms"
+                            className={
+                              activeItem === "GroupSms"
+                                ? "nav-link active"
+                                : "nav-link"
+                            }
+                          >
+                            <p>Compose SMS</p>
+                          </Link>
+                        </li>
+
+                        <li className="nav-item">
+                          <Link
+                            to="/History"
+                            className={
+                              activeItem === "History"
+                                ? "nav-link active"
+                                : "nav-link"
+                            }
+                          >
+                            <p> SMS Report</p>
+                          </Link>
+                        </li>
+
+                        <li className="nav-item">
+                          <Link
+                            to="/buysms"
+                            className={
+                              activeItem === "buysms"
+                                ? "nav-link active"
+                                : "nav-link"
+                            }
+                          >
+                            <p> SMS Pack</p>
+                          </Link>
+                        </li>
+                      </ul>
+                    </li>
+                    )} */}
+                  {(userRole === "admin" ) && (
                     <li className="nav-item">
                       <Link
                         to="/prospects"
@@ -205,7 +265,7 @@ function SideNav() {
                         Prospects
                       </Link>
                     </li>
-
+                      )}
                     {/* <li className="nav-item">
                       <Link
                         to="#"
@@ -577,7 +637,7 @@ function SideNav() {
                       </ul>
                     </li> */}
                     {/* for report */}
-
+                    {(userRole === "admin" ) && (
                     <li className="nav-item">
                       <Link
                         to="/Setting"
@@ -591,6 +651,7 @@ function SideNav() {
                         Settings
                       </Link>
                     </li>
+                    )}
                   </>
                 </ul>
               </nav>

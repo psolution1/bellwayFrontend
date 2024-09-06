@@ -6,7 +6,7 @@ export const apiUrl = process.env.REACT_APP_API_URL;
 
 function Campaigns() {
   const [campaigns, setCampaigns] = useState([]);
-
+  const userRole = localStorage.getItem("role");
   const fetchCampaign = async (e) => {
     try {
       console.log("fetch campaign");
@@ -99,6 +99,7 @@ function Campaigns() {
                             >
                               ACTIVE
                             </button>
+                            {(userRole === "admin" ) && (
                             <button
                               className="nav-link"
                               id="nav-tab-1"
@@ -111,6 +112,7 @@ function Campaigns() {
                             >
                               INACTIVE
                             </button>
+                            )}
                           </div>
                         </div>
                       </nav>
@@ -222,12 +224,17 @@ function Campaigns() {
                                                   }
                                                 />
                                               </a>
+                                              {(userRole === "admin" ) && (
                                               <a>
                                                 <i className="fa fa-user-plus" />
                                               </a>
+                                              )}
+                                               {(userRole === "admin" ) && (
                                               <a>
                                                 <i className="fa fa-pencil-square-o" />
                                               </a>
+                                              )}
+                                              {(userRole === "admin" ) && (
                                               <a>
                                                 <i
                                                   className="fa fa-trash"
@@ -240,6 +247,7 @@ function Campaigns() {
                                                   }}
                                                 />
                                               </a>
+                                              )}
                                             </div>
                                           </div>
                                         </div>
@@ -363,12 +371,14 @@ function Campaigns() {
                                               <a>
                                                 <i className="fa fa-pencil-square-o" />
                                               </a>
+                                              {(userRole === "admin" ) && (
                                               <a>
                                                 <i
                                                   className="fa fa-trash"
                                                   aria-hidden="true"
                                                 />
                                               </a>
+                                              )}
                                             </div>
                                           </div>
                                         </div>

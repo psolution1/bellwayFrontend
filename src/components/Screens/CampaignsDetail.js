@@ -10,6 +10,7 @@ import { duration } from "moment";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 function CampaignsDetail() {
+  const userRole = localStorage.getItem("role");
   const logedInAgentEmail = localStorage.getItem("agent_email");
   const navigate = useNavigate();
   const location = useLocation();
@@ -111,6 +112,7 @@ function CampaignsDetail() {
                             >
                               HOME
                             </button>
+                            {(userRole === "admin" ) && (
                             <button
                               className="nav-link"
                               id="nav-tab-1"
@@ -123,6 +125,7 @@ function CampaignsDetail() {
                             >
                               PROSPECTS
                             </button>
+                            )}
                             {/* <button
                               className="nav-link"
                               id="nav-tab-2"
@@ -135,6 +138,7 @@ function CampaignsDetail() {
                             >
                               MEMBERS
                             </button> */}
+                        {(userRole === "admin" ) && (
                             <button
                               className="nav-link"
                               id="nav-tab-3"
@@ -147,6 +151,7 @@ function CampaignsDetail() {
                             >
                               FILES
                             </button>
+                            )}
                           </div>
                         </div>
                       </nav>
