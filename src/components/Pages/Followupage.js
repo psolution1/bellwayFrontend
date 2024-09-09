@@ -41,7 +41,6 @@ export default function Followupage() {
   useEffect(() => {
     setLocalDetails(AllDetails || {});
   }, [AllDetails]);
-
   // const getalltransactional = async () => {
   //   try {
   //     const response = await axios.get('http://localhost:3000/api/v1/getallsmsrecord', {
@@ -55,7 +54,6 @@ export default function Followupage() {
   //     console.log(error);
   //   }
   // }
-  
   useEffect(() => {
     dispatch(getAllStatus());
     dispatch(getAllLead());
@@ -79,6 +77,7 @@ export default function Followupage() {
         getAllAgent({ assign_to_agent: localStorage.getItem("user_id") })
       );
     }
+
     if (_id.id) {
       dispatch(getAllFollowup(_id.id));
       dispatch(getLeadById(_id.id));

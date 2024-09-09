@@ -112,7 +112,7 @@ function CampaignsDetail() {
                             >
                               HOME
                             </button>
-                            {(userRole === "admin" ) && (
+                            
                             <button
                               className="nav-link"
                               id="nav-tab-1"
@@ -125,7 +125,7 @@ function CampaignsDetail() {
                             >
                               PROSPECTS
                             </button>
-                            )}
+                          
                             {/* <button
                               className="nav-link"
                               id="nav-tab-2"

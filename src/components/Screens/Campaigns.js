@@ -126,11 +126,12 @@ function Campaigns() {
                           role="tabpanel"
                           aria-labelledby="nav-tab-0"
                         >
+                          {(userRole === "admin" ) && (
                           <div className="row">
                             <div className="col-12 col-lg-12">
                               <div className="btn-create-campaigns-wrap">
                                 {/* <a className="btn-create-campaigns">
-                                                            Create Campaigns
+                                  Create Campaigns
                                                         </a> */}
                                 <Link
                                   to="/CreateCampaigns"
@@ -141,6 +142,7 @@ function Campaigns() {
                               </div>
                             </div>
                           </div>
+                          )}
                           <div className="row">
                             {campaigns
                               .filter((item) => item.IsActive)

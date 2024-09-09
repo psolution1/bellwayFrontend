@@ -253,7 +253,7 @@ function SideNav() {
                       </ul>
                     </li>
                     )} */}
-                  {(userRole === "admin" ) && (
+                  {/* {(userRole === "admin" ) && ( */}
                     <li className="nav-item">
                       <Link
                         to="/prospects"
@@ -265,7 +265,7 @@ function SideNav() {
                         Prospects
                       </Link>
                     </li>
-                      )}
+                      {/* )} */}
                     {/* <li className="nav-item">
                       <Link
                         to="#"
