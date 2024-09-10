@@ -284,38 +284,36 @@ function ProspectTable() {
 
   // Get agentEmail and role from localStorage
   const agentEmail = localStorage.getItem("agent_email");
-  const role = localStorage.getItem("role");
+const role = localStorage.getItem("role");
+const [selectedAgent, setSelectedAgent] = React.useState(agentEmail || "All"); // State to track the selected agent
 
-  // Fetch data based on disposition, agentEmail, and campaign
-  const fetchData = async (fDisposition = "All", agentEmail, campaignName, pageNo = 1) => {
-    try {
-      // Adjust API request based on role
-      const emailParam = role === "admin" ? "All" : agentEmail;
-      const res = await axios.get(
-        `${apiUrl}/get_all_prospects?disposition=${fDisposition}&agentEmail=${emailParam}&campaignName=${campaignName}&page=${pageNo}&perPage=${countPerPage}`
-      );
-      if (res.status === 200) {
-        setData(res.data.data);
-      }
-      console.log(res.data);
-    } catch (err) {
-      console.log(err);
+// Fetch data based on disposition, selected agent, and campaign
+const fetchData = async (fDisposition = "All", agentEmail, campaignName, pageNo = 1) => {
+  try {
+    // Adjust API request based on role and selected agent
+    const emailParam = role === "admin" ? (selectedAgent === "All" ? "All" : selectedAgent) : agentEmail;
+    const res = await axios.get(
+      `${apiUrl}/get_all_prospects?disposition=${fDisposition}&agentEmail=${emailParam}&campaignName=${campaignName}&page=${pageNo}&perPage=${countPerPage}`
+    );
+    if (res.status === 200) {
+      setData(res.data.data);
     }
-  };
+    console.log(res.data);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
+// Pagination request
+const onPageRequest = (page) => {
+  setPage(page);
+  fetchData(disposition, agentEmail, campaign, page);
+};
 
-  
-
-  const onPageRequest = (page) => {
-    setPage(page);
-    fetchData(disposition, agentEmail, campaign, page);
-  };
-
-
-  
-  React.useEffect(() => {
-    fetchData(disposition, agentEmail, campaign);
-  }, [disposition, agentEmail, campaign]);
+// Effect to fetch data when disposition, agentEmail, campaign, or selectedAgent changes
+React.useEffect(() => {
+  fetchData(disposition, agentEmail, campaign);
+}, [disposition, agentEmail, campaign, selectedAgent]);
 
   // const fetchData = async (fDisposition = null, agentEmail, campaignName,pageNo=1) => {
   //   try {
@@ -387,19 +385,22 @@ function ProspectTable() {
 
             {(userRole === "admin" ) && (
               <div className="col">
-                <div className="filter-colmn">
-                  <label>Select By Agent</label>
-                  <br />
-                  <select onChange={(e) => setAgent(e.target.value)}>
-                    <option value="All">All</option>
-                    {filters.agents?.map((agent) => (
-                      <option key={agent._id} value={agent._id}>
-                        {agent._id}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+              <div className="filter-colmn">
+                <label>Select By Agent</label>
+                <br />
+                <select
+                  onChange={(e) => setSelectedAgent(e.target.value)} // Update the selected agent
+                  value={selectedAgent} // Ensure the dropdown reflects the selected value
+                >
+                  <option value="All">All</option>
+                  {filters.agents?.map((agent) => (
+                    <option key={agent._id} value={agent._id}>
+                      {agent._id}
+                    </option>
+                  ))}
+                </select>
               </div>
+            </div>
 
                   )}
               <div className="col">
