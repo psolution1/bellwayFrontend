@@ -60,6 +60,7 @@ function generateRandomColorsArray(size) {
 }
 
 function Dashboard() {
+  const userRole = localStorage.getItem("role");
   const [prospectWiseData, setProspectWiseData] = useState({});
   const [pieData, setPieData] = useState(null);
   const [barData, setBarData] = useState(null);
@@ -355,6 +356,7 @@ function Dashboard() {
                             >
                               Call Detail Wise
                             </button>
+                            {(userRole === "admin" ) && (
                             <button
                               className="nav-link"
                               id="nav-tab-1"
@@ -366,7 +368,7 @@ function Dashboard() {
                               aria-selected="false"
                             >
                               Prospect Wise
-                            </button>
+                            </button>)}
                           </div>
                         </div>
                       </nav>
