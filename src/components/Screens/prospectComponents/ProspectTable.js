@@ -451,6 +451,7 @@ React.useEffect(() => {
                 onChange={(e) => setDisposition(e.target.value)}
               />
               <label>{"  "}Not Interested</label>&nbsp;&nbsp;&nbsp;&nbsp;
+              {(userRole === "admin" ) && (
               <button>
                 <a
                   href={`${apiUrl}/download_prospects?agentEmail=${agentEmail}&campaignName=${campaign}&disposition=${disposition}`}
@@ -458,6 +459,7 @@ React.useEffect(() => {
                   Download CSV
                 </a>
               </button>
+              )}
             </div>
           </div>
         </div>

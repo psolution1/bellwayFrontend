@@ -64,9 +64,13 @@ function ProspectWiseDetail() {
   const [pieData, setPieData] = useState(null);
   const [barData, setBarData] = useState(null);
 
+  const loggedInAgentId = localStorage.getItem("user_id"); 
+  const loggedInUserRole = localStorage.getItem("role"); 
+
+console.log(loggedInUserRole)
   const [agentWiseData, setAgentWiseData] = useState(null);
 
-  const fetchData = async () => {
+  const fetchData1 = async () => {
     try {
       const res = await axios.get(`${apiUrl}/report_prospects_wise`);
       if (res.status === 200) {
@@ -188,9 +192,134 @@ function ProspectWiseDetail() {
     }
   };
 
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(`${apiUrl}/report_prospects_wise`);
+      if (res.status === 200) {
+        const {
+          totalCallDisconnected = 0,
+          totalCallback = 0,
+          totalInterested = 0,
+          totalNotAnswered = 0,
+          totalNotContacted = 0,
+          totalNotInterested = 0,
+          totalNotReachable = 0,
+          campaignWise = [],
+          agentWise = [],
+        } = res.data?.data;
+  
+        // Set Pie Data
+        setPieData({
+          labels: [
+            "Call Disconnected",
+            "Callback",
+            "Interested",
+            "Not Answered",
+            "Not Contacted",
+            "Not Interested",
+            "Not Reachable",
+          ],
+          datasets: [
+            {
+              label: "# of Response",
+              data: [
+                totalCallDisconnected,
+                totalCallback,
+                totalInterested,
+                totalNotAnswered,
+                totalNotContacted,
+                totalNotInterested,
+                totalNotReachable,
+              ],
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+                "rgba(75, 192, 192, 0.2)",
+                "rgba(153, 102, 255, 0.2)",
+                "rgba(255, 159, 64, 0.2)",
+                "rgba(255, 122, 84, 0.2)",
+              ],
+              borderColor: [
+                "rgba(255, 99, 132, 1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(75, 192, 192, 1)",
+                "rgba(153, 102, 255, 1)",
+                "rgba(255, 159, 64, 1)",
+                "rgba(255, 122, 84, 1)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        });
+  
+        // Set Bar Data for Campaign
+        if (campaignWise && campaignWise?.length > 0) {
+          const labels = campaignWise?.map((item) => item?.campaignName);
+          const data = campaignWise?.map((item) => item?.totalCount);
+          const backgroundColors = campaignWise?.map(
+            (item, index) => colors[index]
+          );
+          const hoverBackgroundColor = campaignWise?.map(
+            (item, index) => transparentColors[index]
+          );
+  
+          setBarData({
+            labels,
+            datasets: [
+              {
+                data,
+                label: "# of Response",
+                backgroundColor: backgroundColors,
+                hoverBackgroundColor: hoverBackgroundColor,
+                borderWidth: 1,
+              },
+            ],
+          });
+        }
+  
+        // Filter agentWise data to show only logged-in agent's data if the user is an agent
+        if (agentWise && agentWise?.length > 0) {
+          const filteredAgentWise = agentWise.filter((item) => {
+            // Show only data for logged-in agent by matching their ID
+            if (loggedInUserRole === "user") {
+              return item?._id === loggedInAgentId; // Match by agent ID (_id)
+            }
+            return true; // Show all data for non-agent (e.g., "admin")
+          });
+  
+          const labels = filteredAgentWise?.map((item) => item?.agentName); // Use agentName for labels
+          const data = filteredAgentWise?.map((item) => item?.totalCount);
+          const backgroundColors = generateRandomColorsArray(labels?.length);
+          const hoverBackgroundColor = backgroundColors?.map(
+            (item, index) => item + "80"
+          );
+  
+          setAgentWiseData({
+            labels,
+            datasets: [
+              {
+                data,
+                label: "# of Response",
+                backgroundColor: backgroundColors,
+                hoverBackgroundColor: hoverBackgroundColor,
+                borderWidth: 1,
+              },
+            ],
+          });
+        }
+      }
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+
   const [agentWiseMoreDetailData, setAgentWiseMoreDetailData] = useState(null);
   const [isAgentGrapActive, setIsAgentGrapActive] = useState(false);
-
+ 
   const getDataAgentWise = (index) => {
     try {
       //agentId
@@ -437,7 +566,7 @@ function ProspectWiseDetail() {
                               </div>
                             </div>
                           </div>
-
+                          {(loggedInUserRole === "admin" ) && (
                           <div className="row">
                             <div className="col-12 col-lg-2 col-md-2 col-xl-2 jss-pl15-pr5">
                               <div class="jss152">
@@ -535,7 +664,9 @@ function ProspectWiseDetail() {
                               </div>
                             </div>
                           </div>
+                          )}
 
+                            {(loggedInUserRole === "admin" ) && (
                           <div className="row">
                             <div className="col-12 col-lg-6 col-md-6 col-xl-6">
                               <div className="jss145 jss148">
@@ -564,7 +695,7 @@ function ProspectWiseDetail() {
                               </div>
                             </div>
                           </div>
-
+                            )}
                           <div className="row">
                             <div className="col-12 col-lg-12 col-md-12 col-xl-12">
                               <div className="jss145 jss148">
@@ -580,7 +711,9 @@ function ProspectWiseDetail() {
                                           Back
                                         </button>
                                       )}
+                                      
                                       {!isAgentGrapActive && agentWiseData && (
+                                        
                                         <Bar
                                           data={agentWiseData}
                                           options={{
