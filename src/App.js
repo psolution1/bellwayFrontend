@@ -62,11 +62,17 @@ import ProspectDetail from "./components/Screens/ProspectDetail";
 import Prospects from "./components/Screens/Prospects";
 import ActiveCampaign from "./components/Screens/ActiveCampaign";
 import ProspectWiseDetail from "./components/Screens/ProspectWiseDetail";
+import isWebview from "is-ua-webview";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isLogined, setIsLogined] = useState(false);
 
+  console.log(
+    "+++++++++is web view++++++++++++",
+    isWebview(navigator.userAgent),
+    navigator.userAgent
+  );
   useEffect(() => {
     const checkToken = () => {
       try {
@@ -98,11 +104,26 @@ function App() {
                 <Route path="/" element={<Dashboard />}></Route>
                 <Route path="/campaigns" element={<Campaigns />}></Route>
                 <Route path="/prospects" element={<Prospects />}></Route>
-                <Route path="/CampaignsDetail" element={<CampaignsDetail />}></Route>
-                <Route path="/CreateCampaigns" element={<CreateCampaigns />}></Route>
-                <Route path="/ProspectDetail" element={<ProspectDetail />}></Route>
-                <Route path="/ActiveCampaign" element={<ActiveCampaign />}></Route>
-                <Route path="/ProspectWiseDetail" element={<ProspectWiseDetail />}></Route>
+                <Route
+                  path="/CampaignsDetail"
+                  element={<CampaignsDetail />}
+                ></Route>
+                <Route
+                  path="/CreateCampaigns"
+                  element={<CreateCampaigns />}
+                ></Route>
+                <Route
+                  path="/ProspectDetail"
+                  element={<ProspectDetail />}
+                ></Route>
+                <Route
+                  path="/ActiveCampaign"
+                  element={<ActiveCampaign />}
+                ></Route>
+                <Route
+                  path="/ProspectWiseDetail"
+                  element={<ProspectWiseDetail />}
+                ></Route>
                 <Route
                   path="/employeesreport"
                   element={<EmployeeReport />}
