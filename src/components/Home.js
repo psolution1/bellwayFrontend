@@ -13,6 +13,7 @@ import axios from "axios";
 import MyCalendar from "../components/Pages/MonthlyCalendar";
 import Notification from "./Notification";
 import CallBarchart from "./Pages/CallBarchart";
+import isWebview from "is-ua-webview";
 
 function Home() {
   const apiUrl = process.env.REACT_APP_API_URL;
@@ -23,7 +24,13 @@ function Home() {
   var { agent } = useSelector((state) => state.agent);
   const { leadSourcedata } = useSelector((state) => state.leadSource);
   const dispatch = useDispatch();
+
   useEffect(() => {
+    console.log(
+      "+++++++++is web view++++++++++++",
+      isWebview(navigator.userAgent),
+      navigator.userAgent
+    );
     const fetchData1 = async () => {
       try {
         await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -280,8 +287,7 @@ function Home() {
           },
         }
       );
-     setleadcountdata(responce?.data?.Count);
-
+      setleadcountdata(responce?.data?.Count);
     } catch (error) {
       console.log(error);
       setleadcountdata(error.responce?.data?.Count);
